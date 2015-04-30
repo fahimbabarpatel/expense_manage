@@ -1,0 +1,42 @@
+<%= form_for @bill,:html => {:style => "margin-left: 200px;"} do |f| %>
+
+<h2>Add your bill</h2>
+
+Select Event -
+<select name="bill[event]">
+  <%= options_for_select([["BreakFast", "BreakFast"], ["Lunch", "Lunch"], ["Dinner", "Dinner"], ["Other", "Other"]])  %>
+</select>
+
+<br>
+<br>
+
+
+Select Date - 
+<%= date_field(:bill, :b_date) %>
+
+<br>
+<br>
+
+Enter Location - 
+<%= f.text_field :location %>
+
+<br>
+<br>
+
+Enter Total Amount - 
+<%= f.text_field :total_amount %>
+
+<br>
+<br>
+
+<h4>Who paid?</h4>
+
+<% User.all.each do |u| %>
+  <input type="checkbox" name="bill_payer[user_id][<%= u.id %>]" /> <%= u.name%> &nbsp;&nbsp;&nbsp;
+  Amount - 
+  <input id="name" name="bill_payer[amount][<%= u.id %>]" type="text" />
+  <br><br>
+<% end %> 
+
+<%= f.submit "Create Bill"%>
+<% end %>

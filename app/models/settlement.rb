@@ -1,0 +1,2 @@
+class Settlement < CashBalance 
+end

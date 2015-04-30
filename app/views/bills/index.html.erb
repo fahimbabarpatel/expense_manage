@@ -1,0 +1,17 @@
+
+<div style="margin-left: 200px;">
+	<h2>Summary</h2>
+	<% @users.each do |u| %>
+	  <b><%= u.name %></b>
+		
+		Total events attended = <b><%= total_events(u)%></b>	<br>
+        
+    Total amount paid till date = <b><%= total_amount(u)%></b> <br>
+
+    <%= cal_credit(u, @users) %>
+
+		<br>
+		<br>
+
+	<% end %>
+</div>
